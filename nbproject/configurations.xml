@@ -20,10 +20,17 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <logicalFolder name="util" displayName="util" projectFiles="true">
+        <itemPath>util/Lock.cpp</itemPath>
+        <itemPath>util/RegEx.cpp</itemPath>
+        <itemPath>util/SerialIO.cpp</itemPath>
+        <itemPath>util/SerialPort-POSIX.cpp</itemPath>
+        <itemPath>util/SerialPort-WIN32.cpp</itemPath>
+        <itemPath>util/Thread.cpp</itemPath>
+      </logicalFolder>
       <itemPath>SensorBoard.cpp</itemPath>
       <itemPath>SensorBoard.h</itemPath>
       <itemPath>main.cpp</itemPath>
-      <itemPath>util</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -39,6 +46,7 @@
   </logicalFolder>
   <sourceRootList>
     <Elem>include</Elem>
+    <Elem>util</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -73,7 +81,17 @@
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="util" ex="false" tool="3" flavor2="0">
+      <item path="util/Lock.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="util/RegEx.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="util/SerialIO.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="util/SerialPort-POSIX.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="util/SerialPort-WIN32.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="util/Thread.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -114,7 +132,17 @@
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="util" ex="false" tool="3" flavor2="0">
+      <item path="util/Lock.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="util/RegEx.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="util/SerialIO.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="util/SerialPort-POSIX.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="util/SerialPort-WIN32.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="util/Thread.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
   </confs>
