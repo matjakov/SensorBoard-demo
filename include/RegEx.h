@@ -1,6 +1,5 @@
-/* 
- * File:   RegEx.h
- * Author: mk
+/** 
+ * Regular Expressions
  */
 
 #ifndef REGEX_H

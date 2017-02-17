@@ -1,10 +1,11 @@
-/*\brief Thread Class
-*/
+/**
+ * POSIX Threads
+ */
 #ifndef THREAD_H_
 #define THREAD_H_
 
 #include <pthread.h>
-#include <signal.h>
+
 /**
     Runs a procedure independently until it ends, its parent process dies or is canceled.
 */
@@ -15,6 +16,7 @@ class Thread
         virtual ~Thread();
         bool IsValid();
         int Cancel();
+        int EnableCancel(bool enable);
         int Detach();
         int Join(void **value = NULL);
         int TryJoin(void **value = NULL);

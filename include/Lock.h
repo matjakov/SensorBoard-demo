@@ -1,3 +1,6 @@
+/**
+ * POSIX Threads - locking
+ */
 #ifndef PLOCK_H_
 #define PLOCK_H_
 
@@ -22,21 +25,8 @@ class Mutex
 
 
 /**
-    Locks when created, unlocks when destroyed. Handy for protecting entire functions.
-*/
-class AutoLock
-{
-    public:
-        AutoLock(Mutex *locker): lock(locker) {};
-        ~AutoLock() { lock->Unlock(); }
-    private:
-        Mutex *lock;
-};
-
-
-
-/**
-    Spin locks are meant for protecting _simple_ operations.
+    Spin locks are meant for implementing _simple_ atomic operations.
+    Unlock as quickly as possible, because CPU time is being wasted while locked.
 */
 class SpinLock
 {
@@ -52,9 +42,12 @@ class SpinLock
 };
 
 
+
 /**
     Some compilers require inlines be visible at the point of declaration.
 */
+
+
 
 /**
     Blocks if locked by another thread.
@@ -68,7 +61,7 @@ bool SpinLock::Lock()
 
 /**
     Non-blocking Lock().
-    Returns false if already locked.
+    \return false if already locked.
 */
 bool SpinLock::TryLock()
 {
@@ -76,10 +69,34 @@ bool SpinLock::TryLock()
 }
 
 
+/**
+    Releases the lock.
+*/
 bool SpinLock::Unlock()
 {
     return !pthread_spin_unlock(&spinlock);
 }
 
 
-#endif // PLock_H
+
+
+/**
+    Locks when created, unlocks when destroyed.
+*/
+ template<typename T> class AutoLock
+{
+    public:
+        AutoLock(T& lck): lock(lck)
+        {
+            lock.Lock();
+        };
+        ~AutoLock()
+        {
+            lock.Unlock();
+        }
+    private:
+        T& lock;
+};
+
+
+#endif // PLOCK_H

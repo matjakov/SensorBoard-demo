@@ -1,6 +1,7 @@
 /**
-    Portable POSIX/WIN32 interface to a serial comm. device.
-    by Matjaz Kovac
+    POSIX/WIN32 serial port interface
+    
+    \author Matjaz Kovac
 */
 #ifndef _SERIALPORT_H
 #define _SERIALPORT_H
