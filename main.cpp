@@ -3,6 +3,7 @@
  * Author: mk
  */
 #include "SensorBoard.h"
+#include <stdio.h>
 
 
 int main(int argc, char **argv )
