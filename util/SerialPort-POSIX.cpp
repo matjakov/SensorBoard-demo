@@ -1,10 +1,6 @@
 /**
-POSIX implementation of SerialPort
-by Matjaz Kovac
-
-http://www.cmrr.umn.edu/~strupp/serial.html
-
-*/
+ * http://www.cmrr.umn.edu/~strupp/serial.html
+ */
 
 #include <SerialPort.h>
 #include <sys/ioctl.h>
@@ -12,6 +8,9 @@ http://www.cmrr.umn.edu/~strupp/serial.html
 #include <fcntl.h>
 
 
+/**
+ * Default constructor.
+ */
 SerialPort::SerialPort():
     mFile(-1),
     mSpeed(B9600),

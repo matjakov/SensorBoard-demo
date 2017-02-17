@@ -23,6 +23,12 @@ RegEx::~RegEx()
     delete [] match;
 }
 
+/**
+ * Compares source, no state change.
+ * @param s
+ * @param flags
+ * @return 
+ */
 int RegEx::Test(const char *s, int flags)
 {
     return regexec(&re, s, 0, NULL, flags);
@@ -30,11 +36,8 @@ int RegEx::Test(const char *s, int flags)
 
 /**
     Matches a string against the complied pattern.
-    Gets the first match and saves the source pointer.
-    If 'src' is NULL the stored pointer is used to obtain 
-    the next possible match, if there was one before.
     The expression must be compiled *without* REG_NOSUB.
-    \param src string to match
+    \param src string to match or NULL to obtain the next match.
     \param flags REG_NOTBOL, REG_NOTEOL
 */
 int RegEx::Match(const char *src, int flags)
@@ -50,7 +53,6 @@ int RegEx::Match(const char *src, int flags)
         status =  regexec(&re, source, re.re_nsub+1, match, flags);
         return status;
 }
-
 
 std::string RegEx::Sub(size_t index)
 {   

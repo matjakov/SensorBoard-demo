@@ -6,8 +6,6 @@
 #include <stdio.h>
 #ifndef _WIN32
 #include <unistd.h>
-#else
-#include <windows.h>
 #endif
 
 
@@ -47,38 +45,51 @@ bool Thread::IsValid()
 
 
 /**
-    Cancels this thread immediately or at the next possibility.
-*/
+ * Sends a cancellation request.
+ * http://man7.org/linux/man-pages/man3/pthread_cancel.3.html
+ */
 int Thread::Cancel()
 {
     return pthread_cancel(thread);
 }
 
+/**
+ * Sets the cancelability state of the calling thread.
+ * http://man7.org/linux/man-pages/man3/pthread_setcancelstate.3.html
+ */
+int Thread::EnableCancel(bool enable)
+{
+    return pthread_setcancelstate(enable ? PTHREAD_CANCEL_ENABLE : PTHREAD_CANCEL_DISABLE, NULL);
+}
 
 /**
-    Makes the calling thread wait for termination of this thread.
-    The exit status of the thread is stored in *value if not NULL.
-*/
+ * Waits for the thread to terminate.
+ * http://man7.org/linux/man-pages/man3/pthread_join.3.html
+ * \param value Exit value if not NULL.
+ */
 int Thread::Join(void **value)
 {
     return pthread_join(thread, value);
 }
 
+/**
+ * Performs a nonblocking join.
+ */
 int Thread::TryJoin(void **value)
 {
     return pthread_tryjoin_np(thread, value);
 }
 
+
 /**
-    Indicate that this thread is never to be joined even though it was created as joinable.
-    The resources will therefore be freed immediately when it terminates instead of waiting for another thread to perform join on it.
-*/
+ * When a detached thread terminates, its resources 
+ * are automatically released back to the system without the need 
+ * for another thread to join with the terminated thread.
+ */
 int Thread::Detach()
 {
     return pthread_detach(thread);
 }
-
-
 
 
 /**

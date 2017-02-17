@@ -1,14 +1,9 @@
-/**
-    \brief pthread classes Lock implementation
-    \author M.Kovac
-*/
 #include <Lock.h>
 
 
-
 /**
-    Creates a new unlocked mutex.
-*/
+ * Creates a new unlocked mutex.
+ */
 Mutex::Mutex()
 {
     pthread_mutex_init(&mutex, NULL);
@@ -22,9 +17,8 @@ Mutex::~Mutex()
 
 
 /**
-    Only one thread can lock (or own) a Mutex variable at any given time.
-    Blocks if locked by another thread.
-*/
+ * Blocks if locked by another thread.
+ */
 bool Mutex::Lock()
 {
     return !pthread_mutex_lock(&mutex);
@@ -42,8 +36,8 @@ bool Mutex::TryLock()
 
 
 /**
-    Releases the lock.
-*/
+ * Releases the lock.
+ */
 bool Mutex::Unlock()
 {
     return !pthread_mutex_unlock(&mutex);
@@ -53,9 +47,6 @@ bool Mutex::Unlock()
 
 
 
-/**
-    Creates a (shared) spinlock.
-*/
 SpinLock::SpinLock(bool shared)
 {
     pthread_spin_init(&spinlock, shared ? PTHREAD_PROCESS_SHARED : PTHREAD_PROCESS_PRIVATE);
