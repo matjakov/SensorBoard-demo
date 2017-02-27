@@ -41,7 +41,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/util/RegEx.o \
 	${OBJECTDIR}/util/SerialIO.o \
 	${OBJECTDIR}/util/SerialPort-POSIX.o \
-	${OBJECTDIR}/util/SerialPort-WIN32.o \
 	${OBJECTDIR}/util/Thread.o
 
 
@@ -69,42 +68,37 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sensorboard-demo.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sensorboard-demo ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/SensorBoard.o: SensorBoard.cpp 
+${OBJECTDIR}/SensorBoard.o: SensorBoard.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/SensorBoard.o SensorBoard.cpp
 
-${OBJECTDIR}/main.o: main.cpp 
+${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
-${OBJECTDIR}/util/Lock.o: util/Lock.cpp 
+${OBJECTDIR}/util/Lock.o: util/Lock.cpp
 	${MKDIR} -p ${OBJECTDIR}/util
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/util/Lock.o util/Lock.cpp
 
-${OBJECTDIR}/util/RegEx.o: util/RegEx.cpp 
+${OBJECTDIR}/util/RegEx.o: util/RegEx.cpp
 	${MKDIR} -p ${OBJECTDIR}/util
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/util/RegEx.o util/RegEx.cpp
 
-${OBJECTDIR}/util/SerialIO.o: util/SerialIO.cpp 
+${OBJECTDIR}/util/SerialIO.o: util/SerialIO.cpp
 	${MKDIR} -p ${OBJECTDIR}/util
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/util/SerialIO.o util/SerialIO.cpp
 
-${OBJECTDIR}/util/SerialPort-POSIX.o: util/SerialPort-POSIX.cpp 
+${OBJECTDIR}/util/SerialPort-POSIX.o: util/SerialPort-POSIX.cpp
 	${MKDIR} -p ${OBJECTDIR}/util
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/util/SerialPort-POSIX.o util/SerialPort-POSIX.cpp
 
-${OBJECTDIR}/util/SerialPort-WIN32.o: util/SerialPort-WIN32.cpp 
-	${MKDIR} -p ${OBJECTDIR}/util
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/util/SerialPort-WIN32.o util/SerialPort-WIN32.cpp
-
-${OBJECTDIR}/util/Thread.o: util/Thread.cpp 
+${OBJECTDIR}/util/Thread.o: util/Thread.cpp
 	${MKDIR} -p ${OBJECTDIR}/util
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/util/Thread.o util/Thread.cpp
@@ -115,7 +109,6 @@ ${OBJECTDIR}/util/Thread.o: util/Thread.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sensorboard-demo.exe
 
 # Subprojects
 .clean-subprojects:

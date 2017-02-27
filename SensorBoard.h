@@ -26,7 +26,7 @@ class SensorBoard {
 public:
     SensorBoard(const char *deviceName, int speed = B115200);
     virtual ~SensorBoard();
-    bool IsValid();
+    bool IsActive();
     bool Start();
     void Stop();
     virtual void Poll();   
@@ -36,7 +36,7 @@ public:
 private:
     static void *ListenerProc(void *argv);
     
-    bool valid;
+    bool active;
     SerialPort serial;    
     Thread *listener;
     Mutex lock;

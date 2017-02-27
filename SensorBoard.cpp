@@ -14,7 +14,7 @@ using namespace std;
 SensorBoard::SensorBoard(const char *deviceName, int speed):
     serial(deviceName, speed),
     listener(NULL),
-    valid(false)
+    active(false)
 {
     serial.SetBlocking(true);
     serial.SetTimeout(5000);
@@ -26,9 +26,9 @@ SensorBoard::~SensorBoard()
     Stop();
 }
 
-bool SensorBoard::IsValid()
+bool SensorBoard::IsActive()
 {
-    return valid;
+    return active;
 }
 
 /**
@@ -40,7 +40,7 @@ bool SensorBoard::Start()
         TRACE("Error opening device '%s'.\n", serial.Port());
         return false;
     }    
-    valid = true;
+    active = true;
     
     if (listener == NULL) {
         listener = new Thread(ListenerProc, this);
@@ -57,7 +57,7 @@ bool SensorBoard::Start()
 void SensorBoard::Stop()
 {
     serial.Close();
-    valid = false;
+    active = false;
     if (listener) {
         // wait 
         for (int i = 0; i < 10 && listener->TryJoin(); i++) {
@@ -104,7 +104,8 @@ void SensorBoard::Poll()
         {
             char s1[32];
             re.Sub(1,s1);
-            PRINT("SUBS: %d, SRC: %s, VAL: %s\n", re.SubCount(), re.Sub(1).c_str(), re.Sub(2).c_str());
+            PRINT("SOURCE: '%s', VALUE: %s\n", re.Sub(1).c_str(), re.Sub(2).c_str());
+            // TODO: Q data
         }
         
     }    
@@ -119,7 +120,7 @@ void *SensorBoard::ListenerProc(void *arg)
 {
     SensorBoard *board = (SensorBoard*)arg;
     PRINT("SensorBoard START.\n"); 
-    while (board->IsValid()) 
+    while (board->IsActive()) 
     {
         board->Poll();
         Thread::Sleep(5);
