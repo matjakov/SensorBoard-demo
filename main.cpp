@@ -17,6 +17,7 @@ int main(int argc, char **argv )
     
     SensorBoard board(argv[1]);
     if (board.Start()) {
+        // pritisni Enter konec
         getchar();
         board.Stop();
     }

@@ -8,10 +8,10 @@
         <itemPath>include/Debug.h</itemPath>
         <itemPath>include/Lock.h</itemPath>
         <itemPath>include/RegEx.h</itemPath>
-        <itemPath>include/SerialIO.h</itemPath>
         <itemPath>include/SerialPort.h</itemPath>
         <itemPath>include/Thread.h</itemPath>
       </logicalFolder>
+      <itemPath>SensorBoard.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -23,12 +23,10 @@
       <logicalFolder name="util" displayName="util" projectFiles="true">
         <itemPath>util/Lock.cpp</itemPath>
         <itemPath>util/RegEx.cpp</itemPath>
-        <itemPath>util/SerialIO.cpp</itemPath>
         <itemPath>util/SerialPort-POSIX.cpp</itemPath>
         <itemPath>util/Thread.cpp</itemPath>
       </logicalFolder>
       <itemPath>SensorBoard.cpp</itemPath>
-      <itemPath>SensorBoard.h</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -78,8 +76,6 @@
       </item>
       <item path="include/RegEx.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="include/SerialIO.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="include/SerialPort.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/Thread.h" ex="false" tool="3" flavor2="0">
@@ -89,8 +85,6 @@
       <item path="util/Lock.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="util/RegEx.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="util/SerialIO.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="util/SerialPort-POSIX.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -127,8 +121,6 @@
       </item>
       <item path="include/RegEx.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="include/SerialIO.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="include/SerialPort.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/Thread.h" ex="false" tool="3" flavor2="0">
@@ -138,8 +130,6 @@
       <item path="util/Lock.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="util/RegEx.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="util/SerialIO.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="util/SerialPort-POSIX.cpp" ex="false" tool="1" flavor2="0">
       </item>

@@ -11,6 +11,7 @@
 #include <Thread.h>
 #include <Lock.h>
 #include <queue>
+#include <string>
 
 struct SensorBoardData
 {
@@ -41,6 +42,7 @@ private:
     Thread *listener;
     Mutex lock;
     std::queue<SensorBoardData> data; 
+    std::string device;
 };
 
 #endif	/* SENSORBOARD_H */

@@ -39,7 +39,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/util/Lock.o \
 	${OBJECTDIR}/util/RegEx.o \
-	${OBJECTDIR}/util/SerialIO.o \
 	${OBJECTDIR}/util/SerialPort-POSIX.o \
 	${OBJECTDIR}/util/Thread.o
 
@@ -87,11 +86,6 @@ ${OBJECTDIR}/util/RegEx.o: util/RegEx.cpp
 	${MKDIR} -p ${OBJECTDIR}/util
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Iinclude -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/util/RegEx.o util/RegEx.cpp
-
-${OBJECTDIR}/util/SerialIO.o: util/SerialIO.cpp
-	${MKDIR} -p ${OBJECTDIR}/util
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Iinclude -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/util/SerialIO.o util/SerialIO.cpp
 
 ${OBJECTDIR}/util/SerialPort-POSIX.o: util/SerialPort-POSIX.cpp
 	${MKDIR} -p ${OBJECTDIR}/util

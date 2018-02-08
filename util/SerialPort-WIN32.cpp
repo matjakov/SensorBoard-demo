@@ -1,8 +1,3 @@
-/**
-WIN32 implementation of SerialPort
-by Matjaz Kovac
-*/
-
 #include <SerialPort.h>
 #include <io.h>
 
@@ -19,27 +14,15 @@ SerialPort::SerialPort():
 }
 
 
-SerialPort::SerialPort(const char *port, int speed, short parityMode, short dataBits):
-    mPort(port),
-    mFile(INVALID_HANDLE_VALUE),
-    mSpeed(speed),
-    mParity(parityMode),
-    mDataBits(dataBits),
-    mStopBits(0),
-    mFlow(0),
-    mBlocking(false)
-{    
-}
-
 SerialPort::~SerialPort()
 {
     Close();
 }
 
 
-bool SerialPort::Open()
+bool SerialPort::Open(const char *device)
 {
-    mFile = CreateFile(Port(), GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+    mFile = CreateFile(device, GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
     if (mFile != INVALID_HANDLE_VALUE)
     {
         Reconfigure();
@@ -71,9 +54,9 @@ void SerialPort::Flush()
 */
 size_t SerialPort::Read(void *buffer, size_t size)
 {
-    DWORD count = 0;
-    ReadFile(mFile, buffer, size, &count, NULL);
-    return count;
+	DWORD count = 0;
+	ReadFile(mFile, buffer, size, &count, NULL);
+	return count;
 }
 
 
@@ -102,10 +85,7 @@ size_t SerialPort::Available()
 }
 
 
-const char* SerialPort::Port() const
-{
-    return mPort.c_str();
-}
+
 
 /**
  * Returns set baud rate.
@@ -134,12 +114,6 @@ bool SerialPort::IsBlocking() const {
     return mBlocking;
 }
 
-
-bool SerialPort::SetPort(const char* port)
-{
-    mPort = port;
-    return port != NULL;
-}
 
 bool SerialPort::SetBaudRate(int rate)
 {
